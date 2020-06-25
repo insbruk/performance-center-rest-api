@@ -2,8 +2,9 @@
 Performance Center (12.5^) REST API Library
 
 # Installation
-
+```
 pip install git+https://github.com/insbruk/performance-center-rest-api.git
+```
 
 # Examples 
 ```python
