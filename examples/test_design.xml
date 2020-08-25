@@ -1,0 +1,100 @@
+<Content xmlns="http://www.hp.com/PC/REST/API">
+    <Controller>HOST_CONTROLLER</Controller>
+    <WorkloadType>
+        <Type>basic</Type>
+        <SubType>by test</SubType>
+        <VusersDistributionMode>by number</VusersDistributionMode>
+    </WorkloadType>
+    <LGDistribution>
+        <Type>manual</Type>
+    </LGDistribution>
+    <MonitorProfiles/>
+    <Groups>
+        <Group>
+            <Name>vugen_script</Name>
+            <Vusers>1</Vusers>
+            <Script>
+                <ID>1</ID>
+                <ProtocolType>Web - HTTP/HTML</ProtocolType>
+            </Script>
+            <Hosts>
+                <Host>
+                    <Name>HOST_GENERATOR</Name>
+                    <Type>specific</Type>
+                </Host>
+            </Hosts>
+            <RTS>
+                <Pacing>
+                    <NumberOfIterations>1</NumberOfIterations>
+                    <StartNewIteration Type="random delay">
+                        <DelayAtRangeOfSeconds>30</DelayAtRangeOfSeconds>
+                        <DelayAtRangeToSeconds>90</DelayAtRangeToSeconds>
+                    </StartNewIteration>
+                </Pacing>
+                <ThinkTime Type="random">
+                    <MinPercentage>50</MinPercentage>
+                    <MaxPercentage>150</MaxPercentage>
+                    <LimitThinkTimeSeconds>0</LimitThinkTimeSeconds>
+                </ThinkTime>
+                <Log Type="standard">
+                    <LogOptions Type="on error">
+                        <CacheSize>1</CacheSize>
+                    </LogOptions>
+                </Log>
+            </RTS>
+        </Group>
+    </Groups>
+    <Scheduler>
+        <Actions>
+            <Action>
+                <Initialize Type="just before vuser runs"/>
+            </Action>
+            <Action>
+                <StartVusers Type="gradually">
+                    <Ramp>
+                        <Vusers>1</Vusers>
+                        <TimeInterval>
+                            <Seconds>10</Seconds>
+                        </TimeInterval>
+                    </Ramp>
+                </StartVusers>
+            </Action>
+            <Action>
+                <Duration Type="indefinitely"/>
+            </Action>
+        </Actions>
+    </Scheduler>
+    <SLA>
+        <TransactionResponseTimePercentile>
+            <Percentile>95</Percentile>
+            <Transactions>
+                <Transaction>
+                    <Name>Transaction_01</Name>
+                    <Threshold>1</Threshold>
+                </Transaction>
+                <Transaction>
+                    <Name>Transaction_02</Name>
+                    <Threshold>2</Threshold>
+                </Transaction>
+                <Transaction>
+                    <Name>Transaction_03</Name>
+                    <Threshold>3</Threshold>
+                </Transaction>
+            </Transactions>
+        </TransactionResponseTimePercentile>
+    </SLA>
+    <Diagnostics>
+        <Enabled>false</Enabled>
+        <VusersPercentage>-1</VusersPercentage>
+        <EnableWebPage>false</EnableWebPage>
+        <J2EEDotNet>
+            <Enabled>false</Enabled>
+            <Probes/>
+            <IsMediatorOFW>false</IsMediatorOFW>
+            <MonitorServerRequests>false</MonitorServerRequests>
+        </J2EEDotNet>
+    </Diagnostics>
+    <AnalysisTemplate>
+        <ID>10</ID>
+    </AnalysisTemplate>
+</Content>
