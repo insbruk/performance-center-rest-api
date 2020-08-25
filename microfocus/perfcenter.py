@@ -162,16 +162,16 @@ class PerfCenter:
                     else:
                         print(f'Error during downloading {f}')
 
-    def download_lr_results(self, date='', run_id='', files_to_download='', test_run_dir=''):
-        if not os.path.exists(test_run_dir):
-            os.mkdir(test_run_dir)
+    def download_lr_results(self, date='', run_id='', files='', dst=''):
+        if not os.path.exists(dst):
+            os.mkdir(dst)
         test_results = self.get_test_results_metadata(run_id=run_id)
         test_results = test_results.json()
         for file in test_results:
-            for dwnl_file in files_to_download:
+            for dwnl_file in files:
                 if file['Name'] == dwnl_file:
                     file_dir = 'lr_{}'.format(file['Type'].replace(' ', '_').lower())
-                    if file_dir in os.listdir(test_run_dir):
+                    if file_dir in os.listdir(dst):
                         print(f'{dwnl_file} are already there')
                         continue
                     # print(f'Downloading {dwnl_file} ...')
@@ -181,7 +181,7 @@ class PerfCenter:
                     )
                     if req.ok:
                         z = zipfile.ZipFile(io.BytesIO(req.content))
-                        z.extractall(f'{test_run_dir}/{file_dir}')
+                        z.extractall(f'{dst}/{file_dir}')
                         print(f'{dwnl_file} is successfully downloaded!')
                     else:
                         print(f'Error during downloading {dwnl_file}')
