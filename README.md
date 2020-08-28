@@ -3,7 +3,7 @@ Performance Center (12.5^) REST API Library
 
 # Performance Center REST API  Reference
 
-[https://admhelp.microfocus.com/pc/en/all/api_refs/Performance_Center_REST_API/Content/Welcome.htm](Performance_Center_REST_API)
+[Performance_Center_REST_API](https://admhelp.microfocus.com/pc/en/all/api_refs/Performance_Center_REST_API/Content/Welcome.htm)
 
 # Installation
 ```
