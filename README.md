@@ -1,6 +1,10 @@
 # performance-center-python-rest-api
 Performance Center (12.5^) REST API Library
 
+# Performance Center REST API  Reference
+
+[https://admhelp.microfocus.com/pc/en/all/api_refs/Performance_Center_REST_API/Content/Welcome.htm](Performance_Center_REST_API)
+
 # Installation
 ```
 pip install git+https://github.com/insbruk/performance-center-rest-api.git
